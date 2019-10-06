@@ -23,6 +23,11 @@ public class DictController {
 		words.addAll(dict.getWords());
 	}
 	
+	@RequestMapping(value="/error", method=RequestMethod.GET)
+	public String errorPage() {
+		return "<h1>The page you are looking for is not present</h1>";
+	}
+	
 	@RequestMapping(value="/word", method=RequestMethod.GET)
 	public String searchWords(@RequestParam("word") String word) {
 		return "The word you are searching for " + word + (words.contains(word) ? " contains " : " doesn't contain ") + " in the list";
@@ -31,5 +36,20 @@ public class DictController {
 	@RequestMapping(value="/words", method=RequestMethod.GET)
 	public Set<String> listWords() {
 		return words;
+	}
+	
+	@RequestMapping(value="/", method=RequestMethod.GET)
+	public String home() {
+		return "<h1>Welcome</h1>";
+	}
+	
+	@RequestMapping(value="/user", method=RequestMethod.GET)
+	public String user() {
+		return "<h1>User</h1>";
+	}
+	
+	@RequestMapping(value="/admin", method=RequestMethod.GET)
+	public String admin() {
+		return "<h1>Admin</h1>";
 	}
 }
